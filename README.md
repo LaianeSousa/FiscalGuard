@@ -6,6 +6,7 @@ O **FiscalGuard** é uma plataforma Full-Stack de conformidade e auditoria fisca
 
 Com uma arquitetura moderna dividida em um ecossistema **Monorepo**, o projeto entrega processamento de notas fiscais de alto desempenho no Back-end e uma experiência analítica imersiva e de alto padrão (Dark Mode Premium) no Front-end.
 
+![image](img_1.png)
 ---
 
 ## 📸 Arquitetura e Design do Sistema
@@ -41,7 +42,7 @@ O sistema foi estruturado seguindo os mais altos padrões de design de interface
 
 O grande diferencial do FiscalGuard é atuar em **duas camadas independentes e complementares**, acabando com o problema da "IA Caixa-Preta":
 
-### **Camada 1: O Xerife Fiscal (Regras Determinísticas)**
+### **Camada 1: O Análise Fiscal (Regras Determinísticas)**
 Varre cada item das Notas Fiscais Eletrônicas (`NF-e`) aplicando validações exatas estruturadas por especialistas:
 1. **Mudança de CST Crítica (`CST_MUDOU_PARA_ISENTO`):** Detecta se um produto que sempre foi tributado apareceu repentinamente como isento/não-tributado.
 2. **Inconsistência Tributária (`CST_INCONSISTENTE`):** Alerta se o faturista preencheu uma alíquota maior que zero em uma operação declarada com CST de isenção.
@@ -52,6 +53,8 @@ Varre cada item das Notas Fiscais Eletrônicas (`NF-e`) aplicando validações e
 Caso o item passe intacto pelas regras fiscais fixas, ele é processado pelo algoritmo **`Isolation Forest`**. O modelo analisa o comportamento multidimensional das variáveis numéricas (`quantidade`, `valor_unitario`):
 * Gera um **`score_bizarrice`** para detectar anomalias estatísticas puras.
 * Marca operações volumétricas atípicas como **`OPERACAO_RARA`**.
+
+![image](img_2.png)
 
 ---
 
@@ -73,6 +76,7 @@ sistema_contabilidade/
 
 ```
 
+![image](img_3.png)
 👥 Autoria e Contribuição
 Desenvolvido por Laiane Sousa como parte de um ecossistema avançado de Engenharia de Dados Aplicada e Auditoria Preditiva Fiscal.
 
